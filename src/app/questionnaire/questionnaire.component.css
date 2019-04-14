@@ -89,26 +89,18 @@
   color: #412563;
 }
 
-@media screen and (max-width: 500px) {
-  .mood {
-    width: 40px !important;
-    height: 40px !important;
-    display: block;
-    background-size: 40px 40px !important;
-  }
-}
-
 .mood {
   width: 60px;
   height: 60px;
   display: block;
+  border: none;
 }
 
 .mood-0 {
   background: url("/assets/mood-0-shadow.svg");
 }
 
-.mood-0:hover {
+.mood-0:active {
   background: url("/assets/mood-0.svg");
 }
 
@@ -116,7 +108,7 @@
   background: url("/assets/mood-1-shadow.svg");
 }
 
-.mood-1:hover {
+.mood-1:active {
   background: url("/assets/mood-1.svg");
 }
 
@@ -125,7 +117,7 @@
   background: url("/assets/mood-2-shadow.svg");
 }
 
-.mood-2:hover {
+.mood-2:active {
   background: url("/assets/mood-2.svg");
 }
 
@@ -134,7 +126,7 @@
   background: url("/assets/mood-3-shadow.svg");
 }
 
-.mood-3:hover {
+.mood-3:active {
   background: url("/assets/mood-3.svg");
 }
 
@@ -143,7 +135,7 @@
   background: url("/assets/mood-4-shadow.svg");
 }
 
-.mood-4:hover {
+.mood-4:active {
   background: url("/assets/mood-4.svg");
 }
 
@@ -153,4 +145,23 @@
   color: #02F578;
   font-size: 18pt;
   font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+  .content-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .content-container .card-body {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .mood {
+    width: 40px !important;
+    height: 40px !important;
+    display: block;
+    background-size: 40px 40px !important;
+  }
 }
