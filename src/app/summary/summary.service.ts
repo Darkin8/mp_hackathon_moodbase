@@ -2,21 +2,30 @@ import { Injectable } from '@angular/core';
 import { AbstractHttpService } from "../abstract-http-service";
 import { HttpClient } from "@angular/common/http";
 import { of } from "rxjs/internal/observable/of";
-import { delay, map } from "rxjs/operators";
+import { catchError, delay, map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { Summary } from "../models/Summary";
+import { globalConfig } from "../global.config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SummaryService extends AbstractHttpService {
 
-  constructor(http: HttpClient) {
+  constructor(private http: HttpClient) {
     super();
   }
 
   public getSummary(id: string): Observable<Summary> {
-    return this.getMockSummary(id);
+    //return this.getMockSummary(id);
+
+    const params = new Map<string, string>();
+    params.set("id", id);
+    return this.http.get<Summary>(this.getUrl(globalConfig.api.getSummary, params))
+      .pipe(
+        map(result => new Summary(result)),
+        catchError(this.handlerError)
+      );
   }
 
   private getMockSummary(id: string): Observable<Summary> {
@@ -37,10 +46,10 @@ export class SummaryService extends AbstractHttpService {
             { id: 3, title: "Question 3", avgResult: 2 },
             { id: 4, title: "Question 4", avgResult: -1.1 },
             { id: 5, title: "Question 5", avgResult: -0.5 },
-            { id: 6, title: "Question 1", avgResult: 1.1 },
-            { id: 7, title: "Question 2", avgResult: 0.98 },
-            { id: 8, title: "Question 3", avgResult: 2 },
-            { id: 9, title: "Question 4", avgResult: -1.1 },
+            { id: 6, title: "Question 1", avgResult: 1.7 },
+            { id: 7, title: "Question 2", avgResult: 1.3 },
+            { id: 8, title: "Question 3", avgResult: 1.0 },
+            { id: 9, title: "Question 4", avgResult: 1.1 },
             { id: 10, title: "Question 5", avgResult: -0.5 },
           ]},
         { id: "3", title: "Project 3", numberOfVotes: 54, questions: [

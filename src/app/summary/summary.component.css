@@ -3,8 +3,7 @@
   box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 
-  padding-top: 30px;
-  padding-bottom: 40px;
+  padding: 30px 20px 40px;
 
   font-family: SF Mono, serif;
 }
@@ -16,4 +15,53 @@
 .card-title.survey-title {
   font-size: 12pt;
   color: #02F578;
+}
+
+table {
+  color: #ffffff;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  color: #ffffff;
+}
+
+table tbody {
+  background-color: #ffffff03;
+}
+
+.table-bordered {
+  border-color: #2B1446;
+}
+
+table.table-bordered {
+  border-color: #2B1446;
+}
+
+table.table-bordered > thead > tr > th {
+  border-color: #2B1446;
+}
+
+table.table-bordered > tbody > tr > td {
+  border-color: #2B1446;
+}
+
+th {
+  color: #8059B2;
+  background-color: #291145;
+}
+
+.average-mood-column img {
+  width: 20px;
+  height: 20px;
+}
+
+.project-title-column {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.back-to-projects {
+  font-weight: bold;
+  cursor: pointer;
 }

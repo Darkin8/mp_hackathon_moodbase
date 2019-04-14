@@ -3,8 +3,9 @@ import { AbstractHttpService } from "../abstract-http-service";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Team } from "../models/Team";
-import { delay, map } from "rxjs/operators";
+import { catchError, delay, map } from "rxjs/operators";
 import { of } from "rxjs/internal/observable/of";
+import { globalConfig } from "../global.config";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,13 @@ export class TeamsService extends AbstractHttpService {
   }
 
   public getTeams(): Observable<Array<Team>> {
-    return this.getMockTeams();
+    //return this.getMockTeams();
+
+    return this.http.get<Array<Team>>(this.getUrl(globalConfig.api.getTeams))
+      .pipe(
+        map(result => result.map(t => new Team(t))),
+        catchError(this.handlerError)
+      );
   }
 
   private getMockTeams(): Observable<Array<Team>> {

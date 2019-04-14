@@ -38,16 +38,16 @@ export class QuestionnaireService extends AbstractHttpService {
             return of(null);
           } else {
 
-            return this.getMockQuestionnaire(id, userToken);
+            //return this.getMockQuestionnaire(id, userToken);
 
-            /*const params = new Map<string, string>();
+            const params = new Map<string, string>();
             params.set("id", id);
 
             return this.http.get<Questionnaire>(this.getUrl(globalConfig.api.getQuestionnaire, params))
               .pipe(
                 map(result => new Questionnaire(result)),
                 catchError(this.handlerError)
-              );*/
+              );
           }
         })
       );
@@ -74,7 +74,7 @@ export class QuestionnaireService extends AbstractHttpService {
   public saveAnswers(data: Questionnaire, userToken: string, teamId: string): Observable<boolean> {
     data.projectId = teamId;
 
-    return this.saveMockAnswers(data, userToken)
+    /*return this.saveMockAnswers(data, userToken)
       .pipe(
         tap(result => {
           this.localStorage.getItem<Array<string>>(FINISHED_SURVEYS)
@@ -87,16 +87,16 @@ export class QuestionnaireService extends AbstractHttpService {
               });
             })
         })
-      );
+      );*/
 
-    /*return this.http.post(this.getUrl(globalConfig.api.saveQuestionnaire), data)
+    return this.http.post(this.getUrl(globalConfig.api.saveQuestionnaire), data)
       .pipe(
         map(result => true),
         tap(result => {
           this.localStorage.getItem<Array<string>>(FINISHED_SURVEYS)
             .subscribe((list: Array<string>) => {
               list = list || new Array<string>();
-              list.push(data.id);
+              list.push(data.slug);
 
               this.localStorage.setItem(FINISHED_SURVEYS, list).subscribe(() => {
                 console.info("Finished surveys list is updated");
@@ -104,7 +104,7 @@ export class QuestionnaireService extends AbstractHttpService {
             })
         }),
         catchError(this.handlerError)
-      );*/
+      );
   }
 
   private saveMockAnswers(data: Questionnaire, userToken: string): Observable<boolean> {
