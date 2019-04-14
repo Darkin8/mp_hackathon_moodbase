@@ -63,11 +63,11 @@
               {{currentQuestion.title}}
             </p>
             <div class="row vote-section justify-content-center">
-              <div class="col-2"><i class="fa fa-battery-0 fa-2x" (click)="nextQuestion(-2)"></i></div>
-              <div class="col-2"><i class="fa fa-battery-1 fa-2x" (click)="nextQuestion(-1)"></i></div>
-              <div class="col-2"><i class="fa fa-battery-2 fa-2x" (click)="nextQuestion(-0)"></i></div>
-              <div class="col-2"><i class="fa fa-battery-3 fa-2x" (click)="nextQuestion(1)"></i></div>
-              <div class="col-2"><i class="fa fa-battery-4 fa-2x" (click)="nextQuestion(2)"></i></div>
+              <div class="col-2"><i class="mood mood-0" (click)="nextQuestion(-2)"></i></div>
+              <div class="col-2"><i class="mood mood-1" (click)="nextQuestion(-1)"></i></div>
+              <div class="col-2"><i class="mood mood-2" (click)="nextQuestion(-0)"></i></div>
+              <div class="col-2"><i class="mood mood-3" (click)="nextQuestion(1)"></i></div>
+              <div class="col-2"><i class="mood mood-4" (click)="nextQuestion(2)"></i></div>
             </div>
           </div>
         </div>
@@ -75,34 +75,24 @@
 
       <!-- Thanks and Bye! -->
       <ng-container *ngSwitchCase="2">
-        <div class="card content-container">
-          <img [src]="current.image" *ngIf="current.image" class="card-img-top" alt="Questionnaire {{current.id}}">
-          <div class="card-body text-center">
-            <h5 class="card-title" *ngIf="current.title">{{current.title}}</h5>
-            <p class="card-text text-center">
-              Thank you for completing the survey!
-            </p>
-            <button class="btn btn-primary" [disabled]="saving">
-              <ng-container *ngIf="saving">
-                <i class="fa fa-spinner fa-spin"></i>&nbsp;
-                Saving ...
-              </ng-container>
-              <ng-container *ngIf="!saving">Close</ng-container>
-            </button>
+        <div class="survey-finished text-center">
+          <div class="mb-3">
+            <img *ngIf="!saving" src="/assets/check.svg" />
+            <i *ngIf="saving" class="fa fa-spinner fa-spin fa-4x"></i>
           </div>
+          <p>Congrats!</p>
+          <p>You made an impact.</p>
         </div>
       </ng-container>
 
       <!-- Duplicate survey passing -->
       <ng-container *ngSwitchCase="3">
-        <div class="card content-container">
-          <img src="/assets/no_duplicates.jpg" class="card-img-top" alt="Duplicate Questionnaire!">
-          <div class="card-body text-center">
-            <p class="card-text text-center">
-              Sorry, but the survey has already finished!
-            </p>
-            <button class="btn btn-primary">Close</button>
+        <div class="survey-finished text-center">
+          <div class="mb-3">
+            <img *ngIf="!saving" src="/assets/check.svg" />
           </div>
+          <p>You have already</p>
+          <p>passed the survey</p>
         </div>
       </ng-container>
 

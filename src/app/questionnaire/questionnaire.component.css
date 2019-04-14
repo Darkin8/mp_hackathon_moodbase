@@ -20,6 +20,10 @@
   color: #ffffff;
 }
 
+.card .vote-section {
+  margin-top: 70px;
+}
+
 .card .vote-section i {
   cursor: pointer;
 }
@@ -84,3 +88,61 @@
 .total-steps {
   color: #412563;
 }
+
+.mood {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+
+.mood-0 {
+  background: url("/assets/mood-0-shadow.svg");
+}
+
+.mood-0:hover {
+  background: url("/assets/mood-0.svg");
+}
+
+.mood-1 {
+  background: url("/assets/mood-1-shadow.svg");
+}
+
+.mood-1:hover {
+  background: url("/assets/mood-1.svg");
+}
+
+
+.mood-2 {
+  background: url("/assets/mood-2-shadow.svg");
+}
+
+.mood-2:hover {
+  background: url("/assets/mood-2.svg");
+}
+
+
+.mood-3 {
+  background: url("/assets/mood-3-shadow.svg");
+}
+
+.mood-3:hover {
+  background: url("/assets/mood-3.svg");
+}
+
+
+.mood-4 {
+  background: url("/assets/mood-4-shadow.svg");
+}
+
+.mood-4:hover {
+  background: url("/assets/mood-4.svg");
+}
+
+.survey-finished {
+  margin-top: 180px;
+  margin-bottom: 30px;
+  color: #02F578;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
