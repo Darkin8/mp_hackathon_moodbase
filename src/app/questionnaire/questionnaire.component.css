@@ -96,6 +96,12 @@
   border: none;
 }
 
+.mood:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
 .mood-0 {
   background: url("/assets/mood-0-shadow.svg");
 }
